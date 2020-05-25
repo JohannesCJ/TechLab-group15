@@ -14,8 +14,8 @@ import pandas as pd
 
 
 def main():
-    argsfilenames = ["book_best_001_050.jl"]
-    argsoutput = "books_test-bestlist.csv"
+    argsfilenames = ["book_popularByDate.jl"]
+    argsoutput = "books_popularByDate.csv"
     
     #argsfilenames = input("Enter filename")
     #argsoutput = input("Enter output name, e.g. books_list1.csv")
