@@ -1,3 +1,4 @@
+heavily borrowed from  havanagrawal 
 
 <h1 align="center">GoodreadsScraper</h1>
 
