@@ -31,23 +31,24 @@ class ListSpider(scrapy.Spider):
         super().__init__()
         self.book_spider = BookSpider()
         #months_2019 = ["October", "November", "December"]
-        #months_2020 = ["January", "February", "March", "April", "May"]
-        months_2019 = ["January", "February", "March", "April", "May", "June",
-                       "July", "August", "September"] #missing last time
+        months_2020 = ["June", "July", "August", "September", "October", 
+                       "November", "December"] #expected publications
+        #months_2019 = ["January", "February", "March", "April", "May", "June",
+        #               "July", "August", "September"] #missing last time
         months_2021 = ["January", "February", "March", "April", "May", "June",
                        "July", "August", "September", "October", "November", 
                        "December"] #expected publications
 
         self.start_urls = []
-        # for month in months_2020:
-        #     year = 2020
-        #     list_url = self.goodreads_list_url.format(year, month)
-        #     self.start_urls.append(list_url)
-            
-        for month in months_2019:
-            year = 2019
+        for month in months_2020:
+            year = 2020
             list_url = self.goodreads_list_url.format(year, month)
             self.start_urls.append(list_url)
+            
+        # for month in months_2019:
+        #     year = 2019
+        #     list_url = self.goodreads_list_url.format(year, month)
+        #     self.start_urls.append(list_url)
 
         for month in months_2021:
             year = 2021

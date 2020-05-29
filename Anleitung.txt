@@ -1,4 +1,5 @@
-1. Copy file "books_popularByDate.csv" from OneNote to the folder "data" in the "TechLab-group15" folder
-2. Open Anaconda Prompt and paste the following command (replace parent path of TechLab-group15 folder with your path)
+1. Copy file "all_books_popularByDate.csv" from OneNote to the folder "data" in the "TechLab-group15" folder
+2. Open Anaconda Prompt and paste the following command
 	jupyter notebook --notebook-dir="parent path of TechLab-group15 folder" 
+Replace parent path of TechLab-group15 folder with your path. In my case that's: D:\OneDrive - Universität Münster\Studium\TechLabs-AI\TechLab-group15 On Linux/MAX you might need to change \ to /.
 3. Navigate to Jupyter Notebook "data_processing.ipynb" and open it

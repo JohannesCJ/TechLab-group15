@@ -34,7 +34,8 @@ def safe_parse_date(date):
 
 
 def extract_publish_dates(maybe_dates):
-    maybe_dates = [s for s in maybe_dates if "published" in s.lower()]
+    maybe_dates = [s for s in maybe_dates if ("published" in s.lower() 
+                                              or "publication" in s.lower()) ]
     return [safe_parse_date(date) for date in maybe_dates]
 
 
