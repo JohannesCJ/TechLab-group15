@@ -26,14 +26,14 @@ def main():
 
     replace_missing_list_column_values(df, 'genres')
     replace_missing_list_column_values(df, 'awards')
-    # replace_missing_list_column_values(df, 'publish_date')
-    # replace_missing_list_column_values(df, 'num_ratings')
-    # replace_missing_list_column_values(df, 'num_reviews')
-    # replace_missing_list_column_values(df, 'avg_rating')
-    # replace_missing_list_column_values(df, 'num_pages')
-    # replace_missing_list_column_values(df, 'awards')
-    # replace_missing_list_column_values(df, 'original_publish_year')
-    # replace_missing_list_column_values(df, 'series')
+    replace_missing_list_column_values(df, 'publish_date')
+    replace_missing_list_column_values(df, 'num_ratings')
+    replace_missing_list_column_values(df, 'num_reviews')
+    replace_missing_list_column_values(df, 'avg_rating')
+    replace_missing_list_column_values(df, 'num_pages')
+    replace_missing_list_column_values(df, 'awards')
+    replace_missing_list_column_values(df, 'original_publish_year')
+    replace_missing_list_column_values(df, 'series')
     
 
     one_hot_encode_genres(df)
