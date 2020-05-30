@@ -137,7 +137,7 @@ dmypy.json
 
 # Ignore generated datasets
 *.jl
-*.csv
+#*.csv
 *.json
 
 # Ignore virtualenv
