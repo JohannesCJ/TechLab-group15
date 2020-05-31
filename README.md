@@ -1,5 +1,10 @@
-heavily borrowed from  havanagrawal 
+## Table of Contents
+1. GoodreadsScraper (havanagrawal, TechLabs group 15)
+1. Data Preprocessing (TechLabs group 15)
+1. Data Analysis (TechLabs group 15)
 
+borrowed from  havanagrawal (https://github.com/havanagrawal/GoodreadsScraper): 
+"
 <h1 align="center">GoodreadsScraper</h1>
 
 <div align="center">
@@ -12,7 +17,7 @@ heavily borrowed from  havanagrawal
 
 A small Python project to pull data from Goodreads using Scrapy and Selenium
 
-## Table of Contents
+### Table of Contents, GoodreadsScraper
 
 1. [Introduction](#introduction)
 1. [Installation](#installation)
@@ -26,13 +31,13 @@ A small Python project to pull data from Goodreads using Scrapy and Selenium
 1. [[Bonus] Project Ideas](#bonus-project-ideas)
 1. [Contributing](#contributing)
 
-## Introduction
+### Introduction
 
 This is a Python + Scrapy (+ Selenium) based web crawler that fetches book and author data from Goodreads. This can be used for collecting a large data set in a short period of time, for a data analysis/visualization project.
 
 With appropriate controls, the crawler can collect metadata for ~50 books per minute (~3000 per hour). If you want to be more aggressive (at the risk of getting your IP blocked by Goodreads), you can set the `DOWNLOAD_DELAY` to a smaller value in [`settings.py`](./GoodreadsScraper/settings.py#L30), but this is not recommended.
 
-## Installation
+### Installation
 
 For crawling, install [`requirements.txt`](./requirements.txt)
 ```
@@ -45,9 +50,9 @@ virtualenv gscraper
 pip3 install -r requirements.txt
 ```
 
-## How To Run
+### How To Run
 
-### Author Crawls
+#### Author Crawls
 
 Run the following command to crawl all authors on the Goodreads website:
 
@@ -62,7 +67,7 @@ scrapy crawl \
 
 By default, this will store the result to a file called `author_all.jl`
 
-### List Crawls
+#### List Crawls
 
 Run the following command to crawl all books from the first 25 pages of a Listopia list (say 1.Best_Books_Ever). This will store all the books in a file called `book_best_001_025.jl`, and all authors in a file called `author_best_001_025.jl`.
 
@@ -86,7 +91,7 @@ will crawl the first 50 pages of [this list](https://www.goodreads.com/list/show
 
 The paging approach avoids hitting the Goodreads site too heavily. You should also ideally set the `DOWNLOAD_DELAY` to at least 1.
 
-### Cleaning and Aggregating
+#### Cleaning and Aggregating
 
 Note that since the output files are in jsonlines (.jl) format, you can simply cat them together into a single jl file...
 
@@ -116,7 +121,7 @@ python3 cleanup.py \
   --output goodreads.csv
 ```
 
-### Extracting Kindle Price
+#### Extracting Kindle Price
 
 A useful feature is the Kindle price of the book on Amazon. Since this data is populated dynamically on the page, Scrapy is unable to extract it. We now use Selenium to get the Amazon product ID as well as the Kindle price:
 
@@ -128,9 +133,9 @@ The reason we don't use Selenium for extracting the initial information is becau
 
 Now the data are ready to be analyzed, visualized and basically anything else you care to do with it!
 
-## Data Schema
+### Data Schema
 
-### Book
+#### Book
 
 | Column  | Description |
 |---------|-------------|
@@ -156,7 +161,7 @@ Now the data are ready to be analyzed, visualized and basically anything else yo
 \* Goodreads [distinguishes between authors of the same name](https://www.goodreads.com/help/show/20-separating-authors-with-the-same-name) by introducing additional spaces between their names, so this column should be treated with special consideration during cleaning.  
 \*\* While there may be multiple authors for a novel, the scraper only records the first one.
 
-### Author
+#### Author
 
 | Column  | Description |
 |---------|-------------|
@@ -174,11 +179,11 @@ Now the data are ready to be analyzed, visualized and basically anything else yo
 \* In some cases the death date appears to be earlier than the birth date. This is most likely because the dates are BC, and should be inspected to validate this.  
 \*\* This blurb is most likely incomplete because it is shortened, and the complete version is available only through a Javascript function (which Scrapy is incapable of executing). If this is a desired field, then the URL can be used in conjunction with a library like selenium to extract the entire blurb.  
 
-## Note About Temporality
+### Note About Temporality
 
 Since Goodreads is a dynamic platform, with thousands of users constantly adding/deleting/updating reviews and ratings, the data collected through this scraper are valid at a particular timestamp only. Care must be taken while aggregating and deduplicating these data; in most cases one would want to retain the most recently scraped data, but this may change from a case-to-case basis.
 
-## [Bonus] Project Ideas
+### [Bonus] Project Ideas
 
 What can you do with these data? Well, here are a few ideas:
 
@@ -189,6 +194,23 @@ What can you do with these data? Well, here are a few ideas:
 3. As mentioned [here](#note-about-temporality), Goodreads is a dynamic platform, and thus if one chooses to collect these data periodically, one could generate **time-series data**, and observe trends for a particular novel/author over time. One could also perform event detection to determine if the author made a breakthrough in their writing career.  
 
 
-## Contributing
+### Contributing
 
 Fixes and improvements are more than welcome, so raise an issue or send a PR!
+" (taken from: https://github.com/havanagrawal/GoodreadsScraper)
+Edit by TechLabs team 15: The Goodreads list used for this project is called "popular by date".
+
+## Data Preprocessing
+
+The data can be cleaned by using "cleanupAuthors.ipynb" or "cleanupBooks.ipynb" depending on the focous of the project.
+The data was prepared in such a way that it allowed access to user engagement with newly published bookds (mainly ratings and reviews) over the last year and a half.
+
+## Data Analysis
+
+data_analysis_hannes provides information about the populariy of books published during the peak of the Covid-19 crisis. Among the most insightful parameters is the feature called "hotness" which takes into account the user engagement (number of reviews & ratings) and the average user rating all with respect to the age of the book. The hotter a book the more user interaction it provoked. We interpret this as a prime indicator for the demand of a book.
+
+## Contribution
+
+The basis for the scraper as presented here was contributed by havanagrawal and was adapted to the project specific requirements by TechLabs group 15.
+The data preprocessing & analysis was conducted by TechLabs group 15.
+All TechLabs group 15 members contributed equally.
