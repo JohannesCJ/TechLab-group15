@@ -1,13 +1,5 @@
 import pandas as pd
 import numpy as np
-import os
-import seaborn as sns
-import matplotlib.pyplot as plt
-import datetime
-
-#other:
-from ast import literal_eval
-from collections import Counter
 
 def post_timer(age, publish_date):
     """
